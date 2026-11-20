@@ -1,6 +1,6 @@
 ---
 name: design-style-picker
-description: Visual design style picker. Shows a gallery of 53 design styles (glassmorphism, neo-brutalism, bento grid, swiss, Y2K, claymorphism, glossy, liquid glass...) and turns the chosen style into a precise design prompt for UI, slides, posters/images or documents. Use when the user asks vaguely to make a design "modern", "polished", "premium" or "better", does not know design style names, or wants a style prompt. 디자인 스타일 53종을 보여주고 고른 스타일로 디자인 프롬프트(한글 설명 + 영어 프롬프트)를 만듭니다. "세련되게", "모던하게", "고급스럽게", "디자인 개선해줘"처럼 막연한 디자인 요청에 사용합니다.
+description: Design style picker for people who don't know design style names. Shows a visual gallery of 53 UI and graphic design styles (glassmorphism, neo-brutalism, bento grid, swiss, Y2K, claymorphism, glossy, liquid glass...) and turns the chosen style into a precise design prompt for web/app UI, slides, posters/images or documents. Use when someone says "I don't know the name of the design style", "what is this design style called", "make it modern / polished / premium", "improve the design", or wants a design style prompt. 디자인 스타일 이름을 모르겠을 때, 디자인 이름을 몰라서 "세련되게", "모던하게", "디자인 개선해줘"라고만 할 때 사용합니다. 디자인 스타일 53종을 눈으로 보여주고, 고른 스타일로 디자인 프롬프트(한글 설명 + 영어 프롬프트)를 만들어 줍니다.
 ---
 
 # Design Style Picker

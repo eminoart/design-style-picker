@@ -4,6 +4,8 @@
 
 > Stop saying "make it look modern". **See 53 design styles, pick one, and get a precise design prompt** your AI can actually follow.
 
+**Don't know the name of a design style?** That's exactly what this skill is for.
+
 An [Agent Skill](https://skills.sh) for Claude, Claude Code, Codex, Cursor, Gemini CLI and any other agent that supports `SKILL.md`.
 
 ![Design style gallery](docs/preview-en.png)

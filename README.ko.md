@@ -4,6 +4,8 @@
 
 > "세련되게 해줘", "모던하게 해줘" 대신, **디자인 스타일 53종을 눈으로 보고 골라서** AI가 정확히 따라 할 수 있는 디자인 프롬프트를 받으세요.
 
+**디자인 스타일 이름을 모르겠다면?** 바로 이 스킬이 필요한 순간이에요.
+
 Claude, Claude Code, Codex, Cursor, Gemini CLI 등 `SKILL.md`를 지원하는 AI 도구에서 쓰는 [에이전트 스킬](https://skills.sh)입니다.
 
 ![디자인 스타일 갤러리](docs/preview-ko.png)
