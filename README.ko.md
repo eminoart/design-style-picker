@@ -68,10 +68,12 @@ irm https://raw.githubusercontent.com/eminoart/design-style-picker/main/install.
 발표자료를 고급스럽게 만들고 싶어
 ```
 
-1. **갤러리 보기**: Claude 앱에서는 채팅 안에 클릭할 수 있는 갤러리가 뜹니다. 코딩 도구에서는 브라우저로 갤러리가 열립니다. "세련되게", "고급스럽게", "귀엽게" 같은 칩을 누르면 후보 4개만 남습니다.
-2. **고르기**: 메인 스타일 1개, 원하면 보조 스타일 1개를 고릅니다.
-3. **프롬프트 받기**: 추가 질문 없이 설명과 영어 프롬프트를 바로 받습니다. 웹/앱 화면, 슬라이드, 포스터·이미지, 문서 중 어디에 쓸지는 대화 내용을 보고 판단합니다.
-4. **바로 적용**: 작업 중인 파일이 있으면 그 자리에서 적용할지 물어봅니다.
+1. **갤러리 보기**: Claude 앱에서는 채팅 안에, 코딩 도구에서는 브라우저에 갤러리가 열립니다. 모든 스타일이 **같은 화면**(메뉴, 제목, 버튼, 카드)으로 나와서 내용이 아니라 스타일만 비교됩니다.
+2. **내 것으로 보기**: 용도 탭(웹페이지, 발표 슬라이드, 포스터)을 바꾸고 내 문구를 넣으면 모든 미리보기가 바뀝니다. "세련되게", "고급스럽게", "귀엽게" 같은 칩을 누르면 53개가 4개로 좁혀집니다.
+3. **크게 비교**: 마음에 드는 스타일을 최대 4개까지 담으면 위쪽에 크게 나란히 보여 줍니다.
+4. **고르기**: 메인 1개, 원하면 보조 1개를 정합니다.
+5. **프롬프트 받기**: 추가 질문 없이 설명과 영어 프롬프트를 바로 받습니다. 어디에 쓸지는 고른 용도 탭이나 대화 내용으로 정합니다.
+6. **바로 적용**: 작업 중인 파일이 있으면 그 자리에서 적용할지 물어봅니다.
 
 > 설명은 사용자가 쓰는 언어(한국어 또는 영어)로 나옵니다. 프롬프트는 항상 영어로 만듭니다. AI 디자인 도구는 영어 스타일 용어를 가장 정확하게 따르기 때문이에요.
 
@@ -147,7 +149,7 @@ AI 없이 구경만 하고 싶다면 [`gallery.html`](skills/design-style-picker
 design-style-picker/
 ├── skills/design-style-picker/     # 스킬 본체
 │   ├── SKILL.md                    # 동작 순서 + 스타일 요약표
-│   ├── assets/gallery.html         # 53종 갤러리 (채팅 위젯 겸 독립 페이지)
+│   ├── assets/gallery.html         # 53종 갤러리: 같은 화면 미리보기, 크게 비교, 한/영 전환
 │   ├── references/styles.md        # 스타일별 프롬프트 원문
 │   └── scripts/check_ids.py        # 스타일 id 일치 검사
 ├── dist/design-style-picker.zip    # Claude 앱 업로드용 zip
@@ -158,7 +160,7 @@ design-style-picker/
 
 ## 기여하기
 
-1. `references/styles.md`, `assets/gallery.html` 의 `S` 배열과 `.s-<id>` CSS, `SKILL.md` 요약표에 스타일을 추가합니다.
+1. `references/styles.md`, `assets/gallery.html` 의 `S` 배열과 `T` 스타일 토큰, `SKILL.md` 요약표에 스타일을 추가합니다.
 2. `python skills/design-style-picker/scripts/check_ids.py` 를 실행합니다.
 3. zip을 다시 만듭니다: `cd skills && zip -r ../dist/design-style-picker.zip design-style-picker`
 

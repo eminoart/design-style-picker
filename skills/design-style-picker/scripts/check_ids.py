@@ -13,7 +13,7 @@ styles = (root / "references" / "styles.md").read_text(encoding="utf-8")
 skill = (root / "SKILL.md").read_text(encoding="utf-8")
 
 g_data = re.findall(r'^\["([a-z0-9-]+)","[^"]+","[^"]+","[a-z]+",', gallery, re.M)
-g_css = set(re.findall(r"\.s-([a-z0-9-]+)\{", gallery))
+g_css = set(re.findall(r'^"([a-z0-9-]+)":\[', gallery, re.M))  # style tokens in T
 s_ids = re.findall(r"^### `([a-z0-9-]+)`", styles, re.M)
 k_ids = re.findall(r"^- `([a-z0-9-]+)` ", skill, re.M)
 
@@ -23,11 +23,11 @@ for name, ids in [("gallery data", g_data), ("styles.md", s_ids), ("SKILL.md tab
     if dupes:
         problems.append(f"{name}: duplicate ids {sorted(dupes)}")
 base = set(g_data)
-for name, ids in [("gallery css", g_css), ("styles.md", set(s_ids)), ("SKILL.md table", set(k_ids))]:
+for name, ids in [("gallery tokens", g_css), ("styles.md", set(s_ids)), ("SKILL.md table", set(k_ids))]:
     if ids != base:
         problems.append(f"{name}: missing {sorted(base - ids)}, extra {sorted(ids - base)}")
 
-print(f"gallery={len(g_data)} css={len(g_css)} styles.md={len(s_ids)} SKILL.md={len(k_ids)}")
+print(f"gallery={len(g_data)} tokens={len(g_css)} styles.md={len(s_ids)} SKILL.md={len(k_ids)}")
 if problems:
     print("\n".join(problems))
     sys.exit(1)

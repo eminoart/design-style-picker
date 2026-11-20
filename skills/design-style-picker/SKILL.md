@@ -24,13 +24,14 @@ description: Design style picker for people who don't know design style names. S
 **A. 채팅 환경 (Visualizer `show_widget` 도구가 있을 때, claude.ai 등)**
 1. 처음 쓰는 대화라면 Visualizer의 `read_me` 를 먼저 호출합니다 (도구 규칙).
 2. `assets/gallery.html` 을 읽어서 **내용을 한 글자도 바꾸지 말고** `show_widget` 의 `widget_code` 로 그대로 넘깁니다. title 은 `design_style_gallery`.
-3. 위젯 앞에 한 문장만 씁니다. 예: "카드를 눌러 메인 1개, 보조 1개(선택)를 고른 뒤 아래 버튼을 눌러 주세요."
-4. 사용자가 버튼을 누르면 `디자인 스타일 선택 → 메인: glossy (글로시), 보조: minimalism (미니멀리즘)` 형태의 메시지가 들어옵니다.
+3. 위젯 앞에 한 문장만 씁니다. 예: "용도를 고르고 내 문구를 넣은 뒤, 마음에 드는 카드를 최대 4개 담아 위에서 크게 비교해 보세요." (영어 사용자에게는 영어로)
+   - 갤러리는 2단계입니다. 53개 스타일이 **같은 화면**(메뉴, 제목, 버튼, 카드)으로 썸네일에 나오고, 담은 4개는 위쪽 "크게 비교" 칸에 크게 나옵니다. 용도 탭(웹페이지 / 발표 슬라이드 / 포스터)과 내 문구 입력, 한국어/English 전환이 있습니다.
+4. 사용자가 버튼을 누르면 `디자인 스타일 선택 → 메인: glossy (글로시), 보조: minimalism (미니멀리즘). 용도: 웹페이지. 문구: 우리 카페 오픈. 이 조합으로 프롬프트를 만들어 주세요.` 형태의 메시지가 들어옵니다. 영어 모드에서는 `Design style picked → main: ..., secondary: .... Use: Web page. Headline: ....` 형태입니다. 보조, 문구는 없을 수 있습니다.
 
 **B. 코딩 도구 환경 (Claude Code, Cursor 등 셸이 있을 때)**
 1. `assets/gallery.html` 을 작업 폴더에 `design-style-gallery.html` 로 복사합니다. (프로젝트를 더럽히기 싫으면 OS 임시 폴더에 복사)
 2. 브라우저로 엽니다: macOS `open`, Linux `xdg-open`, Windows `start`. 열 수 없으면 파일 경로를 알려 줍니다.
-3. "카드를 고르고 버튼을 누르면 문장이 복사돼요. 여기에 붙여 넣어 주세요"라고 안내합니다.
+3. "용도와 문구를 정하고 카드를 담아 비교한 뒤, 버튼을 누르면 문장이 복사돼요. 여기에 붙여 넣어 주세요"라고 안내합니다.
 4. 동시에, 브라우저 없이도 고를 수 있게 아래 **스타일 요약표**를 카테고리별로 짧게(이름만) 보여 주고 "이름이나 id 로 답해도 돼요"라고 덧붙입니다.
 
 **C. 갤러리 파일이 없을 때 (SKILL.md 만 저장된 경우)**
@@ -48,7 +49,7 @@ description: Design style picker for people who don't know design style names. S
 **사용자에게 더 묻지 않습니다.** 필요한 정보는 대화에서 추론합니다.
 
 1. `references/styles.md` 에서 고른 스타일의 **Prompt** 블록을 찾습니다. (없으면 요약표의 키워드로 같은 밀도의 블록을 직접 씁니다.)
-2. **적용 대상**을 대화 맥락으로 판단합니다.
+2. **적용 대상**을 정합니다. 선택 메시지에 `용도`/`Use` 가 있으면 그대로 따릅니다(웹페이지/Web page → `UI`, 발표 슬라이드/Slide → `Slides`, 포스터/Poster → `Image`). 없으면 대화 맥락으로 판단합니다. `문구`/`Headline` 이 있으면 프롬프트의 헤드라인 예시와 Image 의 `[subject]` 에 그 문구를 넣습니다.
    - 웹/앱 코드, 화면, 컴포넌트 이야기 → `UI`
    - 발표, 슬라이드, PPT, 덱 → `Slides`
    - 포스터, 배너, 썸네일, 이미지 생성 → `Image`

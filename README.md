@@ -68,10 +68,12 @@ Show me design styles
 I want my pitch deck to feel premium
 ```
 
-1. **Browse.** In the Claude app, a clickable gallery appears in the chat. Coding tools open the gallery in your browser. Mood chips such as "Polished", "Premium" and "Cute" narrow the list to 4 candidates.
-2. **Pick.** Choose one main style and, if you like, one secondary style.
-3. **Get the prompt.** You get an explanation and an English prompt right away, with no follow-up questions. The skill infers the target (web/app UI, slides, poster/image or document) from the conversation.
-4. **Apply.** If you're already working on something, it offers to restyle it on the spot.
+1. **Browse.** In the Claude app, the gallery appears right in the chat. Coding tools open it in your browser. Every style shows **the same screen** (menu, headline, button, cards), so you compare styles, not content.
+2. **Make it yours.** Switch the use tab (web page, slide, poster) and type your own headline. Every preview updates. Mood chips such as "Polished", "Premium" and "Cute" narrow 53 styles to 4.
+3. **Compare.** Collect up to 4 styles. They appear large, side by side, at the top.
+4. **Pick.** Mark one main style and, if you like, one secondary style.
+5. **Get the prompt.** You get an explanation and an English prompt right away, with no follow-up questions. The target comes from the use tab you chose, or from the conversation.
+6. **Apply.** If you're already working on something, it offers to restyle it on the spot.
 
 > Explanations follow the language you write in (English or Korean). The generated prompts are always in English, because AI design tools follow English style terms most reliably.
 
@@ -147,7 +149,7 @@ Want to browse without an AI? Open [`gallery.html`](skills/design-style-picker/a
 design-style-picker/
 ├── skills/design-style-picker/     # the skill itself
 │   ├── SKILL.md                    # workflow + style summary table
-│   ├── assets/gallery.html         # 53-style gallery (chat widget and standalone page)
+│   ├── assets/gallery.html         # 53-style gallery: same-screen previews, compare, ko/en
 │   ├── references/styles.md        # full prompt for every style
 │   └── scripts/check_ids.py        # keeps style ids in sync
 ├── dist/design-style-picker.zip    # upload-ready zip for the Claude app
@@ -158,7 +160,7 @@ design-style-picker/
 
 ## Contributing
 
-1. Add the style to `references/styles.md`, to the `S` array and an `.s-<id>` CSS rule in `assets/gallery.html`, and to the summary table in `SKILL.md`.
+1. Add the style to `references/styles.md`, to the `S` array and the `T` style tokens in `assets/gallery.html`, and to the summary table in `SKILL.md`.
 2. Run `python skills/design-style-picker/scripts/check_ids.py`.
 3. Rebuild the zip: `cd skills && zip -r ../dist/design-style-picker.zip design-style-picker`.
 
