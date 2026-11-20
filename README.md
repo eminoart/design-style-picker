@@ -1,122 +1,166 @@
 # Design Style Picker 🎨
 
-> "세련되게 해줘", "모던하게 해줘" 대신, **스타일을 눈으로 보고 골라서** 정확한 디자인 프롬프트를 받는 Claude 스킬
+**English** · [한국어](README.ko.md)
 
-[English](#english) · [한국어](#한국어)
+> Stop saying "make it look modern". **See 53 design styles, pick one, and get a precise design prompt** your AI can actually follow.
 
-![갤러리 미리보기](docs/preview.png)
+An [Agent Skill](https://skills.sh) for Claude, Claude Code, Codex, Cursor, Gemini CLI and any other agent that supports `SKILL.md`.
+
+![Design style gallery](docs/preview-en.png)
 
 ---
 
-## 한국어
+## Why
 
-### 왜 만들었나요?
+Most of us don't know the names of design styles, so we ask AI for something "more polished", "modern" or "premium", and get the same generic result every time.
 
-AI에게 디자인을 맡길 때 우리는 보통 이렇게 말합니다.
+Design Style Picker shows **53 styles as live preview cards**, including glassmorphism, neo-brutalism, bento grid, Swiss, Y2K, liquid glass and glossy. You pick one main style plus an optional secondary style. The skill then writes a **specific prompt** that names the hex palette, corner radius, shadows, typography and things to avoid, and offers to apply it to your work.
 
-- "좀 더 세련되게 해줘"
-- "디자인 개선해줘"
-- "모던하게 바꿔줘"
+## Install
 
-문제는 **디자인 스타일 이름을 몰라서** 이렇게밖에 말을 못 한다는 것이고, AI도 매번 비슷하게 무난한 결과만 냅니다.
-이 스킬은 53가지 디자인 스타일을 미리보기 카드로 보여 주고, 고른 스타일을 그대로 재현하는 **구체적인 영어 프롬프트**(색상 hex, 모서리, 그림자, 서체, 금지 사항까지)를 만들어 줍니다.
+### Easiest: ask your AI
 
-### 어떻게 동작하나요?
+Paste this into Claude Code, Codex, Cursor, Gemini CLI or any agent that has a terminal:
 
-1. **갤러리 보기**: 채팅에서는 클릭 가능한 갤러리 위젯이, Claude Code 같은 코딩 도구에서는 브라우저용 HTML 갤러리가 열립니다.
-2. **고르기**: 메인 스타일 1개 + 보조 스타일 1개(선택). "세련되게", "힙하게" 같은 칩을 누르면 후보만 걸러 줍니다.
-3. **프롬프트 받기**: 추가 질문 없이 바로 **한글 설명 + 영어 프롬프트**를 만듭니다. 웹/앱 UI, 발표 슬라이드, 포스터·이미지, 문서 중 어디에 쓰는지는 대화 맥락으로 판단합니다.
-4. **바로 적용**: 작업 중인 코드나 화면이 있으면 그 자리에서 적용할지 물어봅니다.
+```
+Install the skill from https://github.com/eminoart/design-style-picker
+```
 
-### 수록 스타일 (53종, 8개 카테고리)
+The repo ships [AGENTS.md](AGENTS.md), [CLAUDE.md](CLAUDE.md) and [INSTALL.md](INSTALL.md), so the agent knows what to run.
 
-| 카테고리 | 스타일 |
-|---|---|
-| 모던·클린 | 미니멀리즘, 스위스 스타일, 플랫, 머티리얼, 벤토 그리드, 프리미엄 미니멀, 다크 SaaS, 기업형 클린 |
-| 질감·입체 | 글래스모피즘, 리퀴드 글래스, 뉴모피즘, 클레이모피즘, 스큐어모피즘, 글로시, 아이소메트릭 3D, 페이퍼 컷 |
-| 컬러·빛 | 오로라 그라디언트, 홀로그래픽, 네온 글로우, 듀오톤, 파스텔, 모노크롬, 컬러 블록 |
-| 대담·실험 | 브루탈리즘, 네오브루탈리즘, 사이버펑크, 애시드 그래픽, 볼드 타이포, 맥시멀리즘, 그런지, 콜라주 |
-| 레트로·빈티지 | Y2K, 베이퍼웨이브, 70년대 레트로, 픽셀 아트, 아르데코, 바우하우스, 멤피스, 레트로 퓨처리즘, 리소그래프 |
-| 내추럴·감성 | 오가닉, 재팬디, 핸드드로잉, 수채화, 카와이, 플랫 일러스트 |
-| 고급·에디토리얼 | 럭셔리 블랙앤골드, 엘레강스 세리프, 에디토리얼 매거진, 신문 |
-| 테크·특수 | 터미널, 블루프린트, SF HUD |
+### One command
 
-### 설치
-
-**Claude Code**
 ```bash
-# 개인용 (모든 프로젝트에서 사용)
-git clone https://github.com/eminoart/design-style-picker ~/.claude/skills/design-style-picker
-
-# 특정 프로젝트에서만
-git clone https://github.com/eminoart/design-style-picker .claude/skills/design-style-picker
+npx skills add eminoart/design-style-picker -g -y
 ```
 
-**Claude 앱 (claude.ai / 데스크톱)**
-1. 이 저장소를 zip 으로 내려받습니다 (`Code` → `Download ZIP`). 압축을 푼 뒤 `design-style-picker` 폴더를 다시 zip 으로 묶어도 됩니다.
-2. Claude 설정의 스킬(Skills) 메뉴에서 zip 을 업로드합니다.
+### Other ways
 
-**그 밖의 에이전트**: `SKILL.md` 형식을 지원하는 도구라면 폴더째 스킬 디렉터리에 넣으면 됩니다.
-
-### 사용 예
-
+```bash
+# macOS / Linux / WSL
+curl -fsSL https://raw.githubusercontent.com/eminoart/design-style-picker/main/install.sh | bash
 ```
-이 랜딩페이지 좀 세련되게 바꿔줘
-디자인 스타일 골라서 프롬프트 만들어줘
-발표자료 디자인 어떤 스타일이 좋을지 보여줘
+```powershell
+# Windows PowerShell
+irm https://raw.githubusercontent.com/eminoart/design-style-picker/main/install.ps1 | iex
 ```
 
-갤러리 파일만 따로 보고 싶다면 `assets/gallery.html` 을 브라우저로 열면 됩니다. 카드를 고르고 버튼을 누르면 선택 문장이 클립보드에 복사됩니다.
+| Tool | How to install |
+|---|---|
+| Claude Code | Command above, or copy to `~/.claude/skills/design-style-picker/` |
+| Codex (CLI, IDE, app) | Command above, or copy to `~/.agents/skills/design-style-picker/` |
+| Cursor | Command above, or copy to `~/.cursor/skills/`, `~/.claude/skills/` or `.agents/skills/` |
+| Gemini CLI | Command above, or copy to `~/.gemini/skills/` or `~/.agents/skills/` |
+| **Claude app** (claude.ai, desktop) | Download [`dist/design-style-picker.zip`](https://github.com/eminoart/design-style-picker/raw/main/dist/design-style-picker.zip), then upload it in the Skills section of Settings |
+| **ChatGPT** (web, app) | Create a Project or GPT, paste `SKILL.md` into its instructions, and upload `styles.md` and `gallery.html` as files |
 
-### 폴더 구조
+Full details: [INSTALL.md](INSTALL.md)
+
+## How to use
+
+Talk the way you normally would:
+
+```
+Make this landing page look more modern
+Show me design styles
+I want my pitch deck to feel premium
+```
+
+1. **Browse.** In the Claude app, a clickable gallery appears in the chat. Coding tools open the gallery in your browser. Mood chips such as "Polished", "Premium" and "Cute" narrow the list to 4 candidates.
+2. **Pick.** Choose one main style and, if you like, one secondary style.
+3. **Get the prompt.** You get an explanation and an English prompt right away, with no follow-up questions. The skill infers the target (web/app UI, slides, poster/image or document) from the conversation.
+4. **Apply.** If you're already working on something, it offers to restyle it on the spot.
+
+> Explanations follow the language you write in (English or Korean). The generated prompts are always in English, because AI design tools follow English style terms most reliably.
+
+## Real-world examples
+
+### 1. Restyle a landing page (Claude Code, Cursor, Codex)
+
+> **You:** Make this landing page more modern
+> **AI:** For "modern", good candidates are Dark SaaS, Bento Grid, Swiss and Glassmorphism. *(opens the gallery)*
+> **You:** *(clicks)* Main: Swiss, Secondary: Liquid Glass
+> **AI:** *(writes the prompt)* Apply this to `index.html` now?
+> **You:** Yes
+
+![Before and after: Swiss + Liquid Glass](docs/example-en.png)
+
+Generated prompt (excerpt):
+
+```
+Style — Swiss International Typographic (main, ~70%):
+Strict 12-column grid with visible alignment, asymmetric layouts and flush-left
+ragged-right text. Large, tight grotesk headlines... Palette: white #FFFFFF,
+black #000000 and a single signal red #E30613. No rounded corners, no shadows...
+
+Blend — borrow from Liquid Glass (secondary, ~30%):
+Use liquid glass ONLY for floating chrome: the top navigation bar, a toolbar and
+at most one floating action control. Thick pill-shaped glass (24-40px radius),
+strong backdrop blur, a bright specular highlight along the top edge...
+```
+
+### 2. Get a prompt for another tool (v0, Lovable, Bolt, Figma Make)
+
+> **You:** Show me design styles. I'll build the app in v0.
+> **AI:** *(gallery)* → you pick **Bento Grid + Dark SaaS**
+> **AI:** Gives a UI prompt. Paste it into v0 together with your feature description.
+
+### 3. Pitch deck (Claude, PowerPoint, Google Slides)
+
+> **You:** I want my investor deck to feel premium
+> **AI:** Suggests Luxury Black & Gold, Premium Minimal, Elegant Serif and Art Deco.
+> **You:** Main: Premium Minimal
+> **AI:** Writes a slide-specific prompt (16:9 masters, 18pt+ body text, chart colors), then offers to build or restyle the deck.
+
+### 4. Poster or thumbnail (Midjourney, DALL·E, Imagen, Firefly)
+
+> **You:** A cute poster for my café, I'll make it in Midjourney
+> **AI:** You pick **Kawaii**, and it returns keyword-style image prompts:
+
+```
+cozy café poster with a smiling coffee cup character, kawaii style, round chubby
+shapes with blush marks, candy pastel palette strawberry milk pink and mint,
+soft dark-brown outlines, stickers and sparkles, flat soft lighting,
+centered composition, high detail --ar 4:5
+```
+
+## Included styles (53, in 8 categories)
+
+| Category | Styles |
+|---|---|
+| Modern & clean | Minimalism, Swiss, Flat, Material, Bento Grid, Premium Tech Minimal, Dark SaaS, Corporate Clean |
+| Depth & texture | Glassmorphism, Liquid Glass, Neumorphism, Claymorphism, Skeuomorphism, Glossy / Aqua, Isometric 3D, Paper Cut |
+| Color & light | Aurora / Mesh Gradient, Holographic, Neon Glow, Duotone, Soft Pastel, Monochrome, Color Blocking |
+| Bold & experimental | Brutalism, Neo-Brutalism, Cyberpunk, Acid Graphics, Bold Typography, Maximalism, Grunge, Collage |
+| Retro & vintage | Y2K, Vaporwave, 70s Retro, Pixel / 8-bit, Art Deco, Bauhaus, Memphis, Retro-Futurism, Risograph |
+| Natural & warm | Organic, Japandi, Hand-drawn, Watercolor, Kawaii, Flat Illustration |
+| Luxury & editorial | Luxury Black & Gold, Elegant Serif, Editorial Magazine, Newspaper |
+| Tech | Terminal, Blueprint, Sci-fi HUD |
+
+Want to browse without an AI? Open [`gallery.html`](skills/design-style-picker/assets/gallery.html) in a browser.
+
+## Repository layout
 
 ```
 design-style-picker/
-├── SKILL.md              # 스킬 동작 순서 + 스타일 요약표
-├── assets/gallery.html   # 53종 미리보기 갤러리 (위젯 겸 독립 HTML)
-├── references/styles.md  # 스타일별 특징과 영어 프롬프트 원문
-├── scripts/check_ids.py  # 파일 간 스타일 id 일치 검사
-└── docs/preview.png
+├── skills/design-style-picker/     # the skill itself
+│   ├── SKILL.md                    # workflow + style summary table
+│   ├── assets/gallery.html         # 53-style gallery (chat widget and standalone page)
+│   ├── references/styles.md        # full prompt for every style
+│   └── scripts/check_ids.py        # keeps style ids in sync
+├── dist/design-style-picker.zip    # upload-ready zip for the Claude app
+├── install.sh / install.ps1        # installers
+├── AGENTS.md / CLAUDE.md / INSTALL.md
+└── docs/                           # README images
 ```
 
-### 스타일 추가하기
+## Contributing
 
-1. `references/styles.md` 에 `### \`new-id\` 한글명 · English` 섹션과 Prompt 블록을 추가합니다.
-2. `assets/gallery.html` 의 `S` 배열에 한 줄, CSS 에 `.s-new-id` 규칙을 추가합니다.
-3. `SKILL.md` 의 스타일 요약표에 한 줄 추가합니다.
-4. `python scripts/check_ids.py` 로 세 파일이 맞는지 확인합니다.
+1. Add the style to `references/styles.md`, to the `S` array and an `.s-<id>` CSS rule in `assets/gallery.html`, and to the summary table in `SKILL.md`.
+2. Run `python skills/design-style-picker/scripts/check_ids.py`.
+3. Rebuild the zip: `cd skills && zip -r ../dist/design-style-picker.zip design-style-picker`.
 
-PR 환영합니다!
-
----
-
-## English
-
-### Why?
-
-When we ask AI for design help we usually say "make it more polished" or "make it modern", because we don't know the names of design styles. The result is generic every time.
-
-**Design Style Picker** shows 53 design styles as live preview cards, lets you pick one main style plus an optional secondary style, and instantly writes a precise prompt (hex palette, radius, shadows, typography, things to avoid) that you can paste into any AI tool or apply right away.
-
-### How it works
-
-1. **Browse**: an interactive gallery widget in chat, or an HTML gallery opened in your browser from coding tools like Claude Code.
-2. **Pick**: one main style and up to one secondary style. Mood chips ("polished", "luxurious", "cute"…) filter the candidates.
-3. **Get the prompt**: Korean explanation plus an English prompt, with no follow-up questions. The target (web/app UI, slides, poster/image, document) is inferred from the conversation.
-4. **Apply**: if there is code or a design in progress, the skill offers to apply the style directly.
-
-### Install
-
-```bash
-# Claude Code, personal skills
-git clone https://github.com/eminoart/design-style-picker ~/.claude/skills/design-style-picker
-```
-
-For the Claude app, download this repo as a zip and upload it from the Skills section of Claude's settings.
-
-### Contributing
-
-Add a style to `references/styles.md`, `assets/gallery.html` (data row and `.s-<id>` CSS) and the summary table in `SKILL.md`, then run `python scripts/check_ids.py`.
+Pull requests are welcome.
 
 ## License
 

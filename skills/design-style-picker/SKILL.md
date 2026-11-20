@@ -1,6 +1,6 @@
 ---
 name: design-style-picker
-description: 디자인 스타일 53종을 갤러리로 보여주고, 사용자가 고른 스타일로 바로 쓸 수 있는 디자인 프롬프트(한글 설명 + 영어 프롬프트)를 만들어 줍니다. "세련되게", "모던하게", "고급스럽게", "디자인 개선해줘"처럼 막연하게 디자인을 요청할 때, 디자인 스타일 이름을 모를 때, 스타일을 골라 프롬프트를 만들고 싶을 때 사용합니다.
+description: Visual design style picker. Shows a gallery of 53 design styles (glassmorphism, neo-brutalism, bento grid, swiss, Y2K, claymorphism, glossy, liquid glass...) and turns the chosen style into a precise design prompt for UI, slides, posters/images or documents. Use when the user asks vaguely to make a design "modern", "polished", "premium" or "better", does not know design style names, or wants a style prompt. 디자인 스타일 53종을 보여주고 고른 스타일로 디자인 프롬프트(한글 설명 + 영어 프롬프트)를 만듭니다. "세련되게", "모던하게", "고급스럽게", "디자인 개선해줘"처럼 막연한 디자인 요청에 사용합니다.
 ---
 
 # Design Style Picker
@@ -91,7 +91,7 @@ Avoid: generic template look, random extra colors outside the palette, inconsist
 
 ### 4단계. 출력 형식
 
-아래 형식을 그대로 따릅니다. 설명은 한국어, 프롬프트는 영어입니다.
+아래 형식을 그대로 따릅니다. 설명과 제목은 사용자가 쓰는 언어로 씁니다(한국어 사용자에게는 한국어, 영어 사용자에게는 영어). 프롬프트는 언제나 영어입니다.
 
 ````markdown
 ## 🎨 글로시 (Glossy / Aqua) + 보조: 미니멀리즘
