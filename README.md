@@ -73,7 +73,7 @@ I want my pitch deck to feel premium
 3. **Compare.** Collect up to 4 styles. They appear large, side by side, at the top.
 4. **Pick.** Mark one main style and, if you like, one secondary style.
 5. **Get the prompt.** You get an explanation and an English prompt right away, with no follow-up questions. The target comes from the use tab you chose, or from the conversation.
-6. **Apply.** If you're already working on something, it offers to restyle it on the spot.
+6. **Apply.** If the session already has design work in progress (a page, code, a deck, a screenshot), the skill uses it as the base and writes the prompt for that exact work. A multiple-choice popup then asks: apply it now, just keep the prompt, or pick another style. With nothing in progress, it offers to build a quick example in your chosen format.
 
 > Explanations follow the language you write in (English or Korean). The generated prompts are always in English, because AI design tools follow English style terms most reliably.
 
