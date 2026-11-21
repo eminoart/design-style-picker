@@ -73,7 +73,7 @@ I want my pitch deck to feel premium
 3. **Compare.** Collect up to 4 styles. They appear large, side by side, at the top.
 4. **Pick.** Mark one main style and, if you like, one secondary style.
 5. **Get the prompt.** You get an explanation and an English prompt right away, with no follow-up questions. The target comes from the use tab you chose, or from the conversation.
-6. **Fonts included.** Every prompt names a heading font, a body font and a Korean font that fit the style (e.g. Unbounded + Gmarket Sans for holographic), and applying a style swaps the fonts too.
+6. **Fonts included.** Every prompt names a heading font, a body font and a Korean font that fit the style (e.g. Unbounded + Gmarket Sans for holographic), and applying a style swaps the fonts too. Spacing, grid and type hierarchy are rebalanced for the new style, and charts (series colors, axes, bar shapes, tooltips) follow it as well.
 7. **Apply.** If the session already has design work in progress (a page, code, a deck, a screenshot), the skill uses it as the base and writes the prompt for that exact work. A multiple-choice popup then asks: apply it now, just keep the prompt, or pick another style. With nothing in progress, it offers to build a quick example in your chosen format.
 
 > Explanations follow the language you write in (English or Korean). The generated prompts are always in English, because AI design tools follow English style terms most reliably.

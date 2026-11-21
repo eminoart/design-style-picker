@@ -71,12 +71,23 @@ description: Design style picker for people who don't know design style names. S
 4. 아래 대상별 어댑터를 붙여 최종 영어 프롬프트를 완성합니다.
 5. **기준 작업(0단계)이 있으면** 프롬프트를 그 작업에 맞춥니다. 어댑터 첫 문장의 "the existing interface"를 기준 작업 이름으로 바꾸고(예: `Redesign the existing landing page in index.html ...`), 기준 작업에 실제로 있는 구성 요소(헤더, 가격표, 차트, 표지 등)를 프롬프트에 이름으로 적어 무엇을 어떻게 바꿀지 구체적으로 씁니다. 출력의 **적용 대상** 줄에도 기준 작업 이름을 씁니다.
 6. **글꼴도 반드시 바꿉니다.** 프롬프트의 `Style` 블록 바로 뒤에 `Typography:` 블록을 넣습니다. 아래 **글꼴 추천표**에서 메인 스타일의 제목 글꼴, 본문 글꼴, 한글 글꼴(필요하면 고정폭 글꼴)을 적고, 크기 단계와 굵기, 자간, 불러오는 곳(Google Fonts, jsDelivr의 Pretendard 등)과 대체 글꼴(fallback)까지 씁니다. 보조 스타일은 글꼴을 바꾸지 않고, 꼭 필요할 때 숫자나 라벨 같은 포인트에만 보조 스타일의 글꼴을 빌립니다. 결과물에 한글이 있으면 한글 글꼴을 빠뜨리지 않습니다.
+7. **레이아웃도 균형 있게 다시 맞춥니다.** 색만 바꾸고 배치는 그대로 두면 스타일이 어색해집니다. 프롬프트의 `Typography` 블록 뒤에 `Layout & rhythm:` 블록을 넣습니다.
+   - 스타일에 맞는 간격 단계(예: 4/8/12/16/24/32/48)와 그리드(열 수, 거터, 최대 폭)를 정하고, 카드 안 여백과 카드 사이 간격을 그 단계로 통일합니다.
+   - 새 글꼴 크기에 맞춰 위계를 다시 세웁니다: 제목·소제목·본문·캡션·숫자의 크기와 굵기, 줄 간격, 정렬 기준선을 맞춥니다. 숫자는 `tabular-nums` 로 맞춥니다.
+   - 스타일 성격에 맞게 밀도를 조절합니다. 미니멀·스위스·에디토리얼은 여백을 넓히고 정렬선을 엄격하게, 벤토·대시보드형은 크기가 다른 타일을 그리드에 딱 맞게, 브루탈리즘·멤피스는 굵은 테두리와 엇갈림을 의도적으로 씁니다.
+   - 카드 높이 들쭉날쭉, 한 줄에 남는 빈칸, 글이 넘치거나 잘리는 곳을 정리합니다. 정보를 빼거나 순서를 바꾸지는 않습니다.
+8. **차트와 데이터 시각화도 스타일을 따릅니다.** 기준 작업이나 용도에 차트, 표, 지표 카드가 있으면 `Charts & data viz:` 블록을 넣습니다.
+   - 계열 색: 스타일 팔레트에서 순서 있는 3~6색을 뽑아 정하고, 배경 위 대비를 확인합니다. 좋음·나쁨·경고 같은 의미 색은 스타일 톤에 맞추되 구분이 되게 둡니다.
+   - 축·격자: 스타일에 맞게 굵기와 진하기를 정합니다(미니멀·스위스는 가는 선 최소화, 브루탈리즘은 굵은 검은 축, 다크·네온은 어두운 격자에 밝은 라벨).
+   - 막대·선·면 모양: 막대 모서리 둥글기는 컴포넌트 radius 와 맞추고, 선 굵기, 면 채우기(글래스·오로라는 반투명 그라데이션, 플랫·스위스는 단색, 네온·사이버펑크는 글로우)를 스타일대로 씁니다.
+   - 차트 글자: 축 라벨·범례·툴팁에 본문 글꼴과 숫자 글꼴을 쓰고, 툴팁·범례 상자는 카드 스타일(배경, 테두리, 그림자)과 같게 만듭니다.
+   - 스파크라인, 히트맵, 진행 막대, 상태 배지까지 같은 팔레트와 모양 규칙을 적용합니다. 차트 종류와 데이터는 바꾸지 않습니다.
 
 #### 대상별 어댑터 (영어 프롬프트에 그대로 사용)
 
 `UI`
 ```
-Redesign the existing interface in the style below. Keep all functionality, content, copy and information architecture unchanged; change only the visual layer. First define design tokens (CSS variables) for colors, typography scale, radius, spacing, shadows/effects and motion, then apply them consistently to every component: navigation, buttons (default/hover/active/focus/disabled), inputs, cards, modals, tables, empty states. Keep text contrast at WCAG AA or better, keep it responsive from 360px to 1440px, and respect prefers-reduced-motion.
+Redesign the existing interface in the style below. Keep all functionality, content, copy and the order of information unchanged. Change the visual layer and rebalance the layout to suit the style: spacing scale, grid, alignment, type hierarchy and card sizes. First define design tokens (CSS variables) for colors, typography scale, radius, spacing, shadows/effects, chart colors and motion, then apply them consistently to every component: navigation, buttons (default/hover/active/focus/disabled), inputs, cards, modals, tables, charts, empty states. Keep text contrast at WCAG AA or better, keep it responsive from 360px to 1440px, and respect prefers-reduced-motion.
 ```
 
 `Slides`
@@ -108,7 +119,7 @@ Avoid: generic template look, random extra colors outside the palette, inconsist
 ````markdown
 ## 🎨 글로시 (Glossy / Aqua) + 보조: 미니멀리즘
 
-**어떤 느낌인가요?** 사탕처럼 반들반들한 버튼에 위쪽 하이라이트가 맺히는 2000년대 초 OS 감성이에요. 미니멀리즘을 보조로 섞어 광택은 버튼과 핵심 요소에만 쓰고 나머지는 여백으로 정리했어요. 글꼴은 둥글고 친근한 Varela Round와 나눔고딕으로 바꿔요.
+**어떤 느낌인가요?** 사탕처럼 반들반들한 버튼에 위쪽 하이라이트가 맺히는 2000년대 초 OS 감성이에요. 미니멀리즘을 보조로 섞어 광택은 버튼과 핵심 요소에만 쓰고 나머지는 여백으로 정리했어요. 글꼴은 둥글고 친근한 Varela Round와 나눔고딕으로 바꾸고, 간격과 차트 색도 이 톤에 맞춰 다시 정리해요.
 
 **적용 대상:** 웹/앱 UI (대화에서 판단)
 
@@ -121,6 +132,12 @@ Style — Glossy (main):
 
 Typography:
 <글꼴 추천표의 제목 / 본문 / 한글 글꼴, 크기 단계, 굵기, 자간, 불러오는 곳과 fallback>
+
+Layout & rhythm:
+<간격 단계, 그리드(열·거터·최대 폭), 위계(크기·굵기·줄 간격), 밀도와 정렬 규칙>
+
+Charts & data viz: (차트·표·지표가 있을 때)
+<계열 색 3~6개, 의미 색, 축·격자, 막대 radius·선 굵기·면 채우기, 차트 글꼴, 툴팁·범례 스타일>
 
 Blend — borrow from Minimalism (secondary, ~30%):
 <보조 스타일에서 가져올 1~2개 특징을 구체적으로>
@@ -152,7 +169,7 @@ Avoid: ...
   - 사용자가 대신 파일이나 화면을 보내면 그것을 기준 작업으로 삼아 적용합니다.
 
 선택에 따른 처리
-- **바로 적용**: 위 프롬프트를 지시문 삼아 기준 작업을 직접 수정합니다. 코드라면 디자인 토큰(CSS 변수, Tailwind theme 등)부터 정의하고 컴포넌트에 적용합니다. 기능과 내용은 바꾸지 않습니다. 원본은 덮어쓰지 말고, 파일이면 새 파일이나 새 버전으로 만들고 무엇을 바꿨는지 짧게 알립니다. **글꼴도 함께 바꿉니다**: 웹이면 글꼴을 불러오는 `<link>`나 `@font-face`를 넣고 `font-family` 토큰(제목·본문·고정폭)을 정의해 전체에 적용합니다. 슬라이드·문서면 제목과 본문 글꼴을 바꿉니다. 실행 환경이 외부 글꼴을 막으면(일부 아티팩트·위젯 등) 가장 가까운 시스템 글꼴로 대체하고, 그 사실과 원래 의도한 글꼴 이름을 한 줄로 알립니다.
+- **바로 적용**: 위 프롬프트를 지시문 삼아 기준 작업을 직접 수정합니다. 코드라면 디자인 토큰(CSS 변수, Tailwind theme 등)부터 정의하고 컴포넌트에 적용합니다. 기능과 내용은 바꾸지 않습니다. 원본은 덮어쓰지 말고, 파일이면 새 파일이나 새 버전으로 만들고 무엇을 바꿨는지 짧게 알립니다. **레이아웃과 차트도 함께 맞춥니다**: 간격·그리드·위계를 새 토큰으로 다시 정렬하고, 차트는 계열 색·축·격자·막대 모양·툴팁을 스타일에 맞게 바꿉니다(차트 라이브러리를 쓰면 테마 설정이나 색 배열을 바꾸고, 하드코딩된 색은 토큰으로 바꿉니다). 바꾼 뒤 화면을 한 번 보고 넘치거나 겹치는 곳이 없는지 확인합니다. **글꼴도 함께 바꿉니다**: 웹이면 글꼴을 불러오는 `<link>`나 `@font-face`를 넣고 `font-family` 토큰(제목·본문·고정폭)을 정의해 전체에 적용합니다. 슬라이드·문서면 제목과 본문 글꼴을 바꿉니다. 실행 환경이 외부 글꼴을 막으면(일부 아티팩트·위젯 등) 가장 가까운 시스템 글꼴로 대체하고, 그 사실과 원래 의도한 글꼴 이름을 한 줄로 알립니다.
 - **예시로 만들어 보기**: 고른 용도에 맞는 작은 예시(랜딩 첫 화면, 표지 슬라이드 1장, 포스터 1장)를 만들어 보여 줍니다. 사용자가 준 문구가 있으면 그 문구를 씁니다.
 - **프롬프트만 받기**: 더 묻지 않고 끝냅니다.
 - **다른 스타일 다시 고르기**: 1단계 갤러리를 다시 보여 줍니다.
