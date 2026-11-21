@@ -12,6 +12,7 @@ description: Design style picker for people who don't know design style names. S
 - `assets/gallery.html` : 53개 스타일 미리보기 갤러리 (채팅 위젯 겸 독립 실행 HTML)
 - `references/styles.md` : 스타일별 특징과 영어 프롬프트 원문, 막연한 표현 → 후보 스타일 표
 - 이 파일 맨 아래 **스타일 요약표** : 위 파일을 읽을 수 없을 때 쓰는 최소 데이터
+- 이 파일 맨 아래 **글꼴 추천표** : 스타일별 영문·한글 글꼴. 프롬프트와 실제 적용 모두 이 표를 따릅니다.
 
 ## 진행 순서
 
@@ -69,6 +70,7 @@ description: Design style picker for people who don't know design style names. S
    - 충돌하는 조합(예: 뉴모피즘 + 브루탈리즘, 럭셔리 골드 + 카와이)은 한 줄로 주의를 주되, 그래도 가장 그럴듯한 방식으로 만들어 줍니다.
 4. 아래 대상별 어댑터를 붙여 최종 영어 프롬프트를 완성합니다.
 5. **기준 작업(0단계)이 있으면** 프롬프트를 그 작업에 맞춥니다. 어댑터 첫 문장의 "the existing interface"를 기준 작업 이름으로 바꾸고(예: `Redesign the existing landing page in index.html ...`), 기준 작업에 실제로 있는 구성 요소(헤더, 가격표, 차트, 표지 등)를 프롬프트에 이름으로 적어 무엇을 어떻게 바꿀지 구체적으로 씁니다. 출력의 **적용 대상** 줄에도 기준 작업 이름을 씁니다.
+6. **글꼴도 반드시 바꿉니다.** 프롬프트의 `Style` 블록 바로 뒤에 `Typography:` 블록을 넣습니다. 아래 **글꼴 추천표**에서 메인 스타일의 제목 글꼴, 본문 글꼴, 한글 글꼴(필요하면 고정폭 글꼴)을 적고, 크기 단계와 굵기, 자간, 불러오는 곳(Google Fonts, jsDelivr의 Pretendard 등)과 대체 글꼴(fallback)까지 씁니다. 보조 스타일은 글꼴을 바꾸지 않고, 꼭 필요할 때 숫자나 라벨 같은 포인트에만 보조 스타일의 글꼴을 빌립니다. 결과물에 한글이 있으면 한글 글꼴을 빠뜨리지 않습니다.
 
 #### 대상별 어댑터 (영어 프롬프트에 그대로 사용)
 
@@ -106,7 +108,7 @@ Avoid: generic template look, random extra colors outside the palette, inconsist
 ````markdown
 ## 🎨 글로시 (Glossy / Aqua) + 보조: 미니멀리즘
 
-**어떤 느낌인가요?** 사탕처럼 반들반들한 버튼에 위쪽 하이라이트가 맺히는 2000년대 초 OS 감성이에요. 미니멀리즘을 보조로 섞어 광택은 버튼과 핵심 요소에만 쓰고 나머지는 여백으로 정리했어요.
+**어떤 느낌인가요?** 사탕처럼 반들반들한 버튼에 위쪽 하이라이트가 맺히는 2000년대 초 OS 감성이에요. 미니멀리즘을 보조로 섞어 광택은 버튼과 핵심 요소에만 쓰고 나머지는 여백으로 정리했어요. 글꼴은 둥글고 친근한 Varela Round와 나눔고딕으로 바꿔요.
 
 **적용 대상:** 웹/앱 UI (대화에서 판단)
 
@@ -117,13 +119,18 @@ Avoid: generic template look, random extra colors outside the palette, inconsist
 Style — Glossy (main):
 <styles.md 의 Prompt 블록>
 
+Typography:
+<글꼴 추천표의 제목 / 본문 / 한글 글꼴, 크기 단계, 굵기, 자간, 불러오는 곳과 fallback>
+
 Blend — borrow from Minimalism (secondary, ~30%):
 <보조 스타일에서 가져올 1~2개 특징을 구체적으로>
 
 Avoid: ...
 ```
 
-**한 줄 키워드** (짧게 쓸 때): `glossy aqua UI, candy jelly buttons, top specular highlight, minimal layout, lots of whitespace`
+**글꼴:** `Varela Round / Verdana · 나눔고딕`
+
+**한 줄 키워드** (짧게 쓸 때): `glossy aqua UI, candy jelly buttons, top specular highlight, Varela Round, minimal layout, lots of whitespace`
 ````
 
 - 이모지는 제목에 하나만 씁니다.
@@ -145,7 +152,7 @@ Avoid: ...
   - 사용자가 대신 파일이나 화면을 보내면 그것을 기준 작업으로 삼아 적용합니다.
 
 선택에 따른 처리
-- **바로 적용**: 위 프롬프트를 지시문 삼아 기준 작업을 직접 수정합니다. 코드라면 디자인 토큰(CSS 변수, Tailwind theme 등)부터 정의하고 컴포넌트에 적용합니다. 기능과 내용은 바꾸지 않습니다. 원본은 덮어쓰지 말고, 파일이면 새 파일이나 새 버전으로 만들고 무엇을 바꿨는지 짧게 알립니다.
+- **바로 적용**: 위 프롬프트를 지시문 삼아 기준 작업을 직접 수정합니다. 코드라면 디자인 토큰(CSS 변수, Tailwind theme 등)부터 정의하고 컴포넌트에 적용합니다. 기능과 내용은 바꾸지 않습니다. 원본은 덮어쓰지 말고, 파일이면 새 파일이나 새 버전으로 만들고 무엇을 바꿨는지 짧게 알립니다. **글꼴도 함께 바꿉니다**: 웹이면 글꼴을 불러오는 `<link>`나 `@font-face`를 넣고 `font-family` 토큰(제목·본문·고정폭)을 정의해 전체에 적용합니다. 슬라이드·문서면 제목과 본문 글꼴을 바꿉니다. 실행 환경이 외부 글꼴을 막으면(일부 아티팩트·위젯 등) 가장 가까운 시스템 글꼴로 대체하고, 그 사실과 원래 의도한 글꼴 이름을 한 줄로 알립니다.
 - **예시로 만들어 보기**: 고른 용도에 맞는 작은 예시(랜딩 첫 화면, 표지 슬라이드 1장, 포스터 1장)를 만들어 보여 줍니다. 사용자가 준 문구가 있으면 그 문구를 씁니다.
 - **프롬프트만 받기**: 더 묻지 않고 끝냅니다.
 - **다른 스타일 다시 고르기**: 1단계 갤러리를 다시 보여 줍니다.
@@ -222,3 +229,77 @@ Avoid: ...
 - `terminal` 터미널: black bg, monospace, phosphor green #33FF66, cursor
 - `blueprint` 블루프린트: blueprint blue #123A7A, white grid, dimension lines
 - `sci-fi-hud` SF HUD: thin-line frames, circular gauges, cyan #22D3EE on #020617
+
+## 글꼴 추천표 (id · 영문 제목 / 영문 본문 · 한글)
+
+프롬프트와 실제 적용에 이 표의 글꼴을 씁니다. 대부분 Google Fonts에 있고, Pretendard·Gmarket Sans·D2Coding·Galmuri 같은 한글 글꼴은 jsDelivr 같은 CDN이나 각 배포처에서 불러옵니다.
+
+**모던·클린**
+- `minimalism`: Inter / Inter · Pretendard
+- `swiss`: Neue Haas Grotesk·Helvetica Neue(대체 Inter Tight) / Inter · Pretendard (굵게, 자간 -2%)
+- `flat`: Poppins / Inter · Spoqa Han Sans Neo
+- `material`: Roboto Flex / Roboto · Noto Sans KR
+- `bento`: Inter Display / Inter · Pretendard
+- `premium-minimal`: SF Pro Display(대체 Inter Display) / Inter · Pretendard
+- `dark-saas`: Geist / Geist + Geist Mono · Pretendard + D2Coding
+- `corporate-clean`: IBM Plex Sans / IBM Plex Sans · IBM Plex Sans KR
+
+**질감·입체**
+- `glassmorphism`: Plus Jakarta Sans / Plus Jakarta Sans · Pretendard
+- `liquid-glass`: SF Pro Rounded(대체 Nunito Sans) / Manrope · Pretendard
+- `neumorphism`: Nunito / Nunito · 나눔스퀘어라운드
+- `claymorphism`: Baloo 2 / Nunito · Jua
+- `skeuomorphism`: Georgia·Libre Baskerville / Lucida Grande(대체 Source Sans 3) · 나눔명조
+- `glossy`: Lucida Grande(대체 Varela Round) / Verdana · 나눔고딕
+- `isometric-3d`: Space Grotesk / Inter · SUIT
+- `paper-cut`: Quicksand / Nunito · 나눔스퀘어라운드
+
+**컬러·빛**
+- `aurora`: General Sans·Satoshi(대체 Manrope) / Inter · Pretendard
+- `holographic`: Unbounded / Syne · Gmarket Sans
+- `neon-glow`: Orbitron·Monoton(제목만) / Inter · Black Han Sans(제목) + Pretendard
+- `duotone`: Archivo Black / Archivo · Black Han Sans(제목) + Pretendard
+- `pastel`: Quicksand / Nunito · 나눔스퀘어라운드
+- `monochrome`: Playfair Display / Inter · Noto Serif KR(제목) + Pretendard
+- `color-block`: Archivo Black / Archivo · Gmarket Sans
+
+**대담·실험**
+- `brutalism`: Times New Roman / Courier New · 시스템 바탕체·굴림체
+- `neo-brutalism`: Archivo Black·Space Grotesk / Space Grotesk · Pretendard Black(제목) + Pretendard
+- `cyberpunk`: Orbitron·Rajdhani / JetBrains Mono · Black Han Sans + D2Coding
+- `acid`: Unbounded / Space Mono · Gmarket Sans Bold
+- `kinetic-type`: Anton·Bebas Neue / Inter · Black Han Sans
+- `maximalism`: Abril Fatface / DM Sans · Do Hyeon(제목) + Noto Serif KR
+- `grunge`: Special Elite / Courier Prime · 나눔손글씨 붓
+- `collage`: Playfair Display / Courier Prime · 나눔명조 + 나눔손글씨 펜
+
+**레트로·빈티지**
+- `y2k`: Fredoka / Nunito · Cafe24 써라운드·Jua
+- `vaporwave`: Monoton(제목) / Times New Roman · 송명(Song Myung)
+- `retro-70s`: Cooper Black(대체 Recoleta·Fraunces) / DM Sans · Cafe24 써라운드
+- `pixel-8bit`: Press Start 2P / VT323 · Galmuri11·둥근모꼴
+- `art-deco`: Poiret One·Limelight / Josefin Sans · 송명·고운바탕
+- `bauhaus`: Futura(대체 Jost) / Jost · Gmarket Sans
+- `memphis`: Righteous / Rubik · Do Hyeon·Jua
+- `retro-futurism`: Audiowide·Michroma / Jost · Gmarket Sans
+- `risograph`: Archivo Black / Space Mono · Gothic A1 + Galmuri
+
+**내추럴·감성**
+- `organic`: Fraunces / DM Sans · 고운바탕(제목) + Pretendard
+- `japandi`: Cormorant Garamond / Inter · 고운바탕·Noto Serif KR
+- `hand-drawn`: Caveat / Patrick Hand · Gaegu·나눔손글씨 펜
+- `watercolor`: Cormorant(+ Great Vibes 장식) / Lora · 고운바탕·나눔명조
+- `kawaii`: Fredoka / Baloo 2 · Jua·Cute Font
+- `flat-illustration`: Poppins / DM Sans · SUIT
+
+**고급·에디토리얼**
+- `luxury-gold`: Bodoni Moda(대체 Didot) / Montserrat · Noto Serif KR(제목) + Pretendard
+- `elegant-serif`: Cormorant Garamond / Inter · 고운바탕 + Pretendard
+- `editorial-magazine`: DM Serif Display·Playfair Display / Inter · Noto Serif KR + Pretendard
+- `newspaper`: UnifrakturMaguntia(제호만) + Old Standard TT / Old Standard TT · 나눔명조
+
+**테크·특수**
+- `terminal`: JetBrains Mono / IBM Plex Mono · D2Coding
+- `blueprint`: Space Mono / IBM Plex Mono · D2Coding + IBM Plex Sans KR
+- `sci-fi-hud`: Rajdhani / JetBrains Mono · Gmarket Sans + D2Coding
+
